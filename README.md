@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 
+## Developer
+
+This project was developed and last updated on 10/03/2020 by GGSolomon
+
+## Project description
+
+It is a website where users may enter a GitHub username into a form, submit it, and see names and descriptions of that person's public repositories. 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
