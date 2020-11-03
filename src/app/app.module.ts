@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
 import { SearchResultsItemComponent } from './search-results-item/search-results-item.component';
+import { SearchResultsListComponent } from './search-results-list/search-results-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SearchComponent,
-    SearchResultsItemComponent
+    SearchResultsItemComponent,
+    SearchResultsListComponent
   ],
   imports: [
     BrowserModule,
