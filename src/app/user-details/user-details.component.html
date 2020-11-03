@@ -1,1 +1,88 @@
-<p>user-details works!</p>
+<div [@EnterLeave]="'flyIn'" class="container content"> 
+
+    <style>
+        html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+        </style>
+        <body class="w3-light-grey">
+        
+        <!-- Page Container -->
+        <div class="w3-content w3-margin-top" style="max-width:1400px;">
+        
+          <!-- The Grid -->
+          <div class="w3-row-padding">
+          
+            <!-- Left Column -->
+            <div class="w3-third">
+            <div *ngIf="active_user">             
+                            
+                            <div class="w3-white w3-text-grey w3-card-4">
+                                <div class="w3-display-container">
+                                    <img center class="profile-image" [src]="active_user.avatar_url" alt="User picture">                         
+                                </div>
+                            </div>
+                            
+                            <div class="w3-white w3-text-grey w3-card-4 w3-center">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">{{ active_user.name }}</h3>
+                                </div>
+                            </div>
+                            <div class="w3-center w3-white w3-text-grey w3-card-4">
+                              <button type="button" class="btn btn-primary btn-sm">Repos <span class="badge">{{ active_user.public_repos }}</span></button>
+                              <button type="button" class="btn btn-success btn-sm">Gists <span class="badge">{{ active_user.public_gists }}</span></button>
+                              <button type="button" class="btn btn-warning btn-sm">Followers <span class="badge">{{ active_user.followers }}</span></button>
+                              <button type="button" class="btn btn-info btn-sm">Following <span class="badge">{{ active_user.following }}</span></button>
+                          </div>
+                            <div class="w3-white w3-text-grey w3-card-4 ">
+                <div class="w3-container">
+                  <ul class="list-group" >
+                                    <li class="list-group-item"><strong>Username: </strong>{{ active_user.login }}</li> 
+                                    <li class="list-group-item"><strong>Bio: </strong>{{ active_user.bio }}</li>
+                                    <li class="list-group-item"><strong>Location: </strong>{{ active_user.location }}</li>
+                                    <li class="list-group-item"><strong>Email: </strong>{{ active_user.email }}</li>
+                                    <li class="list-group-item"><strong>Blog: </strong>{{ active_user.blog }}</li> 
+                                    <li class="list-group-item"><strong>Member Since: </strong>{{ active_user.created_at }}</li>  
+                  </ul>
+                  <br>
+                </div>
+                
+                </div>
+              </div><br>
+        
+            <!-- End Left Column -->
+            </div>
+        
+            <!-- Right Column -->
+            <div class="w3-twothird">    
+              <div class="w3-container w3-card w3-white w3-margin-bottom">
+
+              
+                <h2 class="w3-center w3-text-grey w3-padding-16 "><i class="w3-center fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Repos</h2>
+                <div *ngFor="let repo of repos">
+                
+                
+                <div class="w3-container ">
+                                  <h6><a href="{{repo.html_url}}" target="_blank">{{repo.name}}</a></h6>    
+                                    <p>{{repo.description}}</p>
+                                </div>
+                                
+                                <div class="w3-right">
+                                    <button type="button" class="btn btn-success btn-sm">Language <span class="badge">{{ repo.language }}</span></button>
+                                    <button type="button" class="btn btn-primary btn-sm">Watchers <span class="badge">{{ repo.watchers}}</span></button>
+                                    <button type="button" class="btn btn-success btn-sm">Forks <span class="badge">{{ repo.forks }}</span></button>
+                                    
+                                </div>    
+                                </div> 
+        
+                                <hr>
+                                
+                
+              </div>
+        
+            <!-- End Right Column -->
+            </div>
+            
+          <!-- End Grid -->
+          </div>
+          
+          <!-- End Page Container -->
+        </div>

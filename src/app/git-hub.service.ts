@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
 // Import interfaces
-import { IUsersList, IGithubUser } from '../interfaces/github-users';
+import { IUsersList, IGithubUser } from './interfaces/github-users';
 
 @Injectable({
   providedIn: 'root'
