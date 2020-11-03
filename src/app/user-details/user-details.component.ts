@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { GitHubService } from '../git-hub.service';
+import { GitHubService } from '../services/git-hub.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 // Import interfaces
 import { IUsersList, IGithubUser } from '../interfaces/github-users';

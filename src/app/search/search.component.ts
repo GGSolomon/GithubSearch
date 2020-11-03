@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { GitHubService } from '../git-hub.service';
+import { GitHubService } from '../services/git-hub.service';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, filter } from 'rxjs/operators';
 

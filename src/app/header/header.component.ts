@@ -1,52 +1,36 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { GitHubService } from '../git-hub.service';
-import { fromEvent } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, filter } from 'rxjs/operators';
-
-
+import { Component, OnInit } from '@angular/core';
+import { NbThemeService } from '@nebular/theme';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
-export class SearchComponent implements OnInit {
-  
-  public users: any = [];
-  public user_search_params: string = "";
+export class HeaderComponent implements OnInit {
 
-  @ViewChild('user_input') input: ElementRef;
+  // init theme name var
+  public theme_name: string = "default";
 
-  // DI of the GitHub Service
-  constructor(private gitHubService: GitHubService) { }
+  constructor(private themeService: NbThemeService) {
+    this.themeService.onThemeChange()
+      .subscribe((theme: any) => {
+        this.theme_name = theme.name;
+        // console.log(`Theme changed to ${theme.name}`);
+      });
+   }
 
   ngOnInit(): void {
-    
   }
 
-
-  ngAfterViewInit() {
-    fromEvent(this.input.nativeElement, 'keyup').pipe(
-      map((e: KeyboardEvent) => (e.target as HTMLInputElement).value),
-      filter(text => text.length > 2),
-      debounceTime(200),
-      distinctUntilChanged(),
-    ).subscribe(searchValue => {
-      // Handle the data from the API
-      this.onSearchChange(searchValue);
-      console.log("this.users in saerch component", searchValue);
-    });
+  changeThemeTo(theme: string): void{
+    this.themeService.changeTheme(theme);
   }
 
-  onSearchChange(searchValue: string): void {  
-    console.log(searchValue);
-    if (searchValue.length > 2) {
-      this.gitHubService.getUsersList(searchValue).pipe(
-      )
-      .subscribe(data => {
-        this.users = data;
-        console.log("this.users in saerch component", this.users);
-      });
+  isActiveTheme(current_theme:string) {
+    if(this.theme_name == current_theme) {
+      return true;
+    } else {
+      return false;
     }
   }
 
